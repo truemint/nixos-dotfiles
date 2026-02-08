@@ -119,6 +119,10 @@
   };
 
   programs.firefox.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -128,6 +132,9 @@
     btop	# System monitor
     git		# Version control
     bat		# Replacement for cat
+    kitty	# Default terminal for Hyprland
+    waybar
+    hyprpaper	# Wallpaper management
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
