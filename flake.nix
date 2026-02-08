@@ -14,15 +14,15 @@
       system = "x86_64-linux";
       modules = [ 
         ./configuration.nix
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager = {
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
             useGlobalPkgs = true;
-	    useUserPackages = true;
-	    backupFileExtension = "backup";
-	    users.truemint = import ./truemint-home.nix;
-	  };
-	}
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.truemint = import ./truemint-home.nix;
+          };
+        }
       ];
     };
   };
