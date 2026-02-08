@@ -3,7 +3,9 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+# let
+#  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+# in
 {
   imports =
     [ 
@@ -12,6 +14,7 @@
       # in our Git version controlled configs since this file will be unique to the system
       # and is not reusable.
       /etc/nixos/hardware-configuration.nix
+      # (import "${home-manager}/nixos")
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
