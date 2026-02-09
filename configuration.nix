@@ -46,6 +46,13 @@
     };
   };
 
+  catppuccin = {
+    grub = {
+      enable = true;
+      flavor = "macchiato";
+    };
+  };
+
   boot.kernelParams = [ "video=3440x1440" ];
 
   nixpkgs.config.allowUnfree = true;
