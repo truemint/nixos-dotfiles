@@ -14,7 +14,7 @@
       system = "x86_64-linux";
     in {
     nixosConfigurations.Truemint-NixOS = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherits inputs; };
+      specialArgs = { inherit inputs; };
       modules = [ 
         ./configuration.nix
         home-manager.nixosModules.home-manager
