@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, flakeInputs, ... }:
 {
   imports =
     [ 
@@ -11,7 +11,29 @@
       # in our Git version controlled configs since this file will be unique to the system
       # and is not reusable.
       /etc/nixos/hardware-configuration.nix
+
+      # Import the catppuccin/nix module
+      flakeInputs.catppuccin.nixosModules.catppuccin
+
+      # Import the home-manager module
+      flakeInputs.home-manager.nixosModules.home-manager
     ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    users = {
+      truemint = import ./truemint-home.nix;
+    };
+  };
+
+  catppuccin = {
+    grub = {
+      enable = true;
+      flavor = "macchiato";
+    };
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -43,13 +65,6 @@
       efiSupport = true;
       useOSProber = true;
       gfxmodeEfi = "3440x1440";
-    };
-  };
-
-  catppuccin = {
-    grub = {
-      enable = true;
-      flavor = "macchiato";
     };
   };
 

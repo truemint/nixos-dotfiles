@@ -10,24 +10,14 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, catppuccin, ... } @ inputs: 
+  outputs = { nixpkgs, ... } @ flakeInputs: 
     let
       system = "x86_64-linux";
     in {
     nixosConfigurations.Truemint-NixOS = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit flakeInputs system; };
       modules = [ 
         ./configuration.nix
-        catppuccin.nixosModules.catppuccin
-	home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            users.truemint = import ./truemint-home.nix;
-          };
-        }
       ];
     };
   };
