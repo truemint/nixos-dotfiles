@@ -1,7 +1,7 @@
 { pkgs, lib, ... }: {
 
   imports = [
-    # ./hyprland.nix
+    ./hyprland.nix
     ./terminal.nix
   ];
 } 

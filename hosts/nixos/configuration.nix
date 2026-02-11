@@ -34,7 +34,7 @@
   };
 
   catppuccin = {
-    flavor = "macchiato";
+    flavor = "mocha";
     grub.enable = true;
   };
 
@@ -143,6 +143,7 @@
     ];
   };
 
+  programs.bash.enable = true;
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
