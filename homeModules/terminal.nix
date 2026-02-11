@@ -12,7 +12,7 @@
     enable = true;
     settings = {
       font-family = "FiraCode Nerd Font";
-      font-size = 14;
+      font-size = 15;
     };
   };
   catppuccin.ghostty.enable = true;
