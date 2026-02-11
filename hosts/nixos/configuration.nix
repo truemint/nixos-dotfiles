@@ -135,15 +135,28 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.truemint = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.truemint = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      packages = with pkgs; [
+        tree
+      ];
+    };
   };
 
-  programs.bash.enable = true;
+  fonts = {
+    fontDir.enabled = true;
+  };
+
+  programs.bash.enable = false;
+  programs.zsh.enable = true;
+
+  # Facilitates ZSH syntax completion for system commands
+  # Reference: http://www.mynixos.com/home-manager/option/programs.zsh.enableCompletion
+  environment.pathsToLink = [ "/share/zsh" ];
+
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
