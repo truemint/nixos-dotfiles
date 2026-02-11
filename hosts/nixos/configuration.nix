@@ -147,7 +147,7 @@
   };
 
   fonts = {
-    fontDir.enabled = true;
+    fontDir.enable = true;
   };
 
   programs.bash.enable = false;

@@ -2,8 +2,6 @@
 
 { config, lib, pkgs, flakeInputs, ... }:
 {
-  programs.kitty.enable = false;
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -17,9 +15,5 @@
     };
   };
 
-  catppuccin = {
-    hyprland.enable = true;
-    # kitty.enable = true;
-    ghostty.enable = true;
-  };
+  catppuccin.hyprland.enable = true;
 }
