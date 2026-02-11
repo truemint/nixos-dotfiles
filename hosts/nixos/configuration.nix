@@ -21,18 +21,21 @@
 
   home-manager = {
     useGlobalPkgs = true;
-    useUserPackages = true;
+    # useUserPackages = true;
     backupFileExtension = "backup";
     users = {
-      truemint = import ./truemint-home.nix;
+      truemint = {
+        imports = [
+	  ./truemint-home.nix
+	  flakeInputs.catppuccin.homeModules.catppuccin
+	];
+      };
     };
   };
 
   catppuccin = {
-    grub = {
-      enable = true;
-      flavor = "macchiato";
-    };
+    flavor = "macchiato";
+    grub.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -155,9 +158,9 @@
     btop	# System monitor
     git		# Version control
     bat		# Replacement for cat
-    kitty	# Default terminal for Hyprland
-    waybar
-    hyprpaper	# Wallpaper management
+    # kitty	# Default terminal for Hyprland
+    # waybar
+    # hyprpaper	# Wallpaper management
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

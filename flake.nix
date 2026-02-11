@@ -17,7 +17,7 @@
     nixosConfigurations.Truemint-NixOS = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit flakeInputs system; };
       modules = [ 
-        ./configuration.nix
+        ./hosts/nixos/configuration.nix
       ];
     };
   };

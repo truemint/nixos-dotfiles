@@ -1,19 +1,37 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "truemint";
-  home.homeDirectory = "/home/truemint";
-  home.stateVersion = "25.11";
-  programs.bash = {
+  home = {
+    username = "truemint";
+    preferXdgDirectories = true;
+    homeDirectory = "/home/truemint";
+    stateVersion = "25.11";
+  };
+  
+  programs = {
+    kitty.enable = true;
+  };
+
+  # xdg.enable = true tells home-manager to create environment variables for 
+  # XDG_CONFIG_HOME and other related directories as per the XDG Base Directory Specification
+  # https://specifications.freedesktop.org/basedir/latest/
+  xdg.enable = true;
+
+  wayland.windowManager.hyprland = {
     enable = true;
-    shellAliases = {
-      btw = "echo Hello truemint";
+    xwayland.enable = true;
+    settings = {
+      "$mod" = "SUPER";
+      bind = [
+        "$mod, Q, exec, kitty"
+	"$mod, C, killactive,"
+	"$mod, M, exit,"
+      ];
     };
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        # exec uwsm start -S hyprland-uwsm.desktop
-	exec hyprland
-      fi
-    '';
+  };
+  catppuccin = {
+    flavor = "mocha";
+    hyprland.enable = true;
+    kitty.enable = true;
   };
 }
