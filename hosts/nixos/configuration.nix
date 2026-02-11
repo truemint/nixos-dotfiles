@@ -26,7 +26,7 @@
     users = {
       truemint = {
         imports = [
-	  ./truemint-home.nix
+	  ../../truemint-home.nix
 	  flakeInputs.catppuccin.homeModules.catppuccin
 	];
       };
