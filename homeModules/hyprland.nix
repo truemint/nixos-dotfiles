@@ -16,7 +16,7 @@
 	"$mainMod, C, killactive,"
 
 	# Gracefully shutdown Hyprland
-	"$mainMod, M, hyprshutdown,"
+	# "$mainMod, M, hyprshutdown,"
 
 	# Force-shutdown Hyprland
 	"$secondaryMod, M, exit,"
@@ -59,8 +59,8 @@
 	"$mainMod SHIFT, S, movetoworkspace, special:magic"
 
 	# Move / Resize windows with mainMod + LMB/RMB and dragging
-	"$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+	"$mainMod, mouse:272, moveactive"
+        "$mainMod, mouse:273, resizeactive"
 
 	# Switch workspaces with mainMod + [0-9]
 	"$mainMod, 1, workspace, 1"
