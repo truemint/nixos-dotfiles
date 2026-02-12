@@ -5,9 +5,9 @@
 {
   services.wpaperd = {
     enable = true;
-    settings = {
+    settings.default = {
       path = "~/Downloads/Wallpapers";
-      duration = "10s";
+      duration = "30m";
       sorting = "random";
       mode = "center";
     };
