@@ -149,6 +149,8 @@
 
   fonts = {
     fontDir.enable = true;
+    fontconfig.enable = true;
+    enableDefaultPackages = true;
   };
 
   programs.bash.enable = false;
