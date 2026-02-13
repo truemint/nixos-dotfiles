@@ -116,7 +116,18 @@
       };
 
       dwindle = {
+        # Don't change window tile layout when tiles are resized
         preserve_split = true;
+
+        # Split towards right or bottom side only (as opposed to default behavior which chooses direction of split based on mouse position)
+        force_split = 2;
+
+        # When disabled, split direction will not be influenced by mouse position
+        smart_split = false;
+
+        # When there is only one tile on screen, enforce this aspect ration and center the tile. 
+        # Useful on widescreen monitors so that app elements are not pushed to extreme sides of the screen.
+        single_window_aspect_ratio = "4 3";
       };
 
       input = {
