@@ -64,6 +64,7 @@
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
+      default = "saved";		# Boot in the last selected option
       device = "nodev";
       efiSupport = true;
       useOSProber = true;
