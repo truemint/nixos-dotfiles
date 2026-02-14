@@ -79,6 +79,7 @@
 # "$python"
 "[](fg:green bg:sapphire)"
 # "$conda"
+"$git_state"
 "[](fg:sapphire bg:lavender)"
 "$time"
 "[ ](fg:lavender)"
@@ -141,11 +142,16 @@ style = "bg:yellow";
 format = "[[ $symbol $branch ](fg:crust bg:yellow)]($style)";
 };
 
+git_state = {
+style = "bg:yellow";
+format = "[[($state ($progress_current of $progress_total) )](fg:crust bg:yellow)]($style)";
+};
+
 git_status = {
 style = "bg:yellow";
 format = "[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)";
 };
-
+ 
 nodejs = {
 symbol = "";
 style = "bg:green";
