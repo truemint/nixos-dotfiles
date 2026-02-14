@@ -207,6 +207,7 @@ style = "bg:lavender";
 format = "[[  $time ](fg:crust bg:lavender)]($style)";
 };
 
+
 character = {
 disabled = false;
 success_symbol = "[❯](bold fg:green)";
