@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./launcher.nix
     ./hyprland.nix
     ./terminal.nix
     ./wallpaper.nix

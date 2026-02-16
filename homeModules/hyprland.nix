@@ -29,7 +29,7 @@
         # "$mainMod, ESCAPE, exec, hyprlock"
 
         # Run app launcher
-        # "$mainMod, SPACE, exec, rofi"
+        "$mainMod, SPACE, exec, rofi -show drun"
 
         # Window tile behaviors
         "$mainMod, V, togglefloating,"
