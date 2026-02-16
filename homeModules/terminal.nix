@@ -5,14 +5,6 @@
   lib,
   ...
 }: {
-  home.packages = with pkgs; [
-    nerd-fonts.fira-code
-    noto-fonts
-    noto-fonts-color-emoji
-    noto-fonts-monochrome-emoji
-  ];
-  fonts.fontconfig.enable = true;
-
   programs.ghostty = {
     enable = true;
     settings = {
@@ -236,17 +228,4 @@
     };
   };
   catppuccin.starship.enable = true;
-
-  programs.bash = {
-    enable = false;
-
-    historyIgnore = [
-      "ls"
-      "passwd"
-      "pwd"
-      "exit"
-      "history"
-    ];
-    historyControl = ["ignoreboth"];
-  };
 }

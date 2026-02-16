@@ -20,6 +20,9 @@
 
     # Import the home-manager module
     flakeInputs.home-manager.nixosModules.home-manager
+
+    # Imports the fonts module
+    ../../nixosModules
   ];
 
   home-manager = {
@@ -150,12 +153,6 @@
         tree
       ];
     };
-  };
-
-  fonts = {
-    fontDir.enable = true;
-    fontconfig.enable = true;
-    enableDefaultPackages = true;
   };
 
   programs.bash.enable = false;
