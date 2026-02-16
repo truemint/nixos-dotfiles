@@ -10,9 +10,10 @@
     settings = {
       font-family = "FiraCode Nerd Font";
       font-size = 15;
+      theme = "Primary";
     };
   };
-  catppuccin.ghostty.enable = true;
+  # catppuccin.ghostty.enable = true;
 
   programs.zsh = {
     enable = true;
