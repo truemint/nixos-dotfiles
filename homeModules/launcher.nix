@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }: {
   programs.rofi = {
     enable = true;
-    modes = [ "drun" "run" "calc" ];
-    plugins = [ pkgs.rofi-calc ];
+    modes = [ "drun" "run" "calc" "emoji" ];
+    plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
   };
 }
