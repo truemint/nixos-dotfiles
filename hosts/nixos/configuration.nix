@@ -1,23 +1,26 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, flakeInputs, ... }:
 {
-  imports =
-    [ 
-      # Include the results of the hardware scan.
-      # We reference to the system generated version of this file as opposed to keeping a copy
-      # in our Git version controlled configs since this file will be unique to the system
-      # and is not reusable.
-      /etc/nixos/hardware-configuration.nix
+  config,
+  lib,
+  pkgs,
+  flakeInputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    # We reference to the system generated version of this file as opposed to keeping a copy
+    # in our Git version controlled configs since this file will be unique to the system
+    # and is not reusable.
+    /etc/nixos/hardware-configuration.nix
 
-      # Import the catppuccin/nix module
-      flakeInputs.catppuccin.nixosModules.catppuccin
+    # Import the catppuccin/nix module
+    flakeInputs.catppuccin.nixosModules.catppuccin
 
-      # Import the home-manager module
-      flakeInputs.home-manager.nixosModules.home-manager
-    ];
+    # Import the home-manager module
+    flakeInputs.home-manager.nixosModules.home-manager
+  ];
 
   home-manager = {
     useGlobalPkgs = true;
@@ -26,9 +29,9 @@
     users = {
       truemint = {
         imports = [
-	  ../../truemint-home.nix
-	  flakeInputs.catppuccin.homeModules.catppuccin
-	];
+          ../../truemint-home.nix
+          flakeInputs.catppuccin.homeModules.catppuccin
+        ];
       };
     };
   };
@@ -38,7 +41,7 @@
     grub.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Set Swap options
   # zramSwap enables ZRAM for high-speed compressed swap
@@ -46,25 +49,27 @@
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-    memoryPercent = 25;	# Max size of the ZRAM device
-    priority = 100;	# Higher priority than swap file means it's used first
+    memoryPercent = 25; # Max size of the ZRAM device
+    priority = 100; # Higher priority than swap file means it's used first
   };
 
-  swapDevices = [ {
-    device = "/var/lib/swapfile";
-    size = 8192;	# 8GB in MB
-    priority = 10;	# Lower priority than zramSwap means it's used only when ZRAM is full
-  } ];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8192; # 8GB in MB
+      priority = 10; # Lower priority than zramSwap means it's used only when ZRAM is full
+    }
+  ];
 
   # Tells Linux kernel to make good use of the ZRAM swap
-  boot.kernel.sysctl = { "vm.swapiness" = 60; };
+  boot.kernel.sysctl = {"vm.swapiness" = 60;};
 
   # Set boot options
   boot.loader = {
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      default = "saved";		# Boot in the last selected option
+      default = "saved"; # Boot in the last selected option
       device = "nodev";
       efiSupport = true;
       useOSProber = true;
@@ -72,11 +77,11 @@
     };
   };
 
-  boot.kernelParams = [ "video=3440x1440" ];
+  boot.kernelParams = ["video=3440x1440"];
 
   nixpkgs.config.allowUnfree = true;
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -87,8 +92,8 @@
   };
 
   # Load nvidia drivers early to fix resolution for initial boot screens
-  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
+  boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+  boot.extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.stable];
 
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
@@ -124,10 +129,10 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    
+
     # Enable support for JACK applications
     jack.enable = true;
-    
+
     # Use WirePlumber as the session manager
     wireplumber.enable = true;
   };
@@ -140,7 +145,7 @@
     defaultUserShell = pkgs.zsh;
     users.truemint = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
         tree
       ];
@@ -158,7 +163,7 @@
 
   # Facilitates ZSH syntax completion for system commands
   # Reference: http://www.mynixos.com/home-manager/option/programs.zsh.enableCompletion
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 
   programs.firefox.enable = true;
   programs.hyprland = {
@@ -170,11 +175,11 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    neovim	# Neovim editor
+    neovim # Neovim editor
     wget
-    btop	# System monitor
-    git		# Version control
-    bat		# Replacement for cat
+    btop # System monitor
+    git # Version control
+    bat # Replacement for cat
     # kitty	# Default terminal for Hyprland
     # waybar
     # hyprpaper	# Wallpaper management
@@ -222,6 +227,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
-

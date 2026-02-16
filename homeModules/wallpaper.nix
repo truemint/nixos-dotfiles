@@ -1,8 +1,10 @@
 # Truemint's wallpaper configuration
-
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.wpaperd = {
     enable = true;
     settings.default = {

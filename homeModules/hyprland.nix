@@ -1,7 +1,11 @@
 # Nix config for Hyprland window tiling manager
-
-{ config, lib, pkgs, flakeInputs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  flakeInputs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -10,109 +14,109 @@
       "$secondaryMod" = "SUPER SHIFT";
       bind = [
         # Start a terminal window
-	"$mainMod, Q, exec, ghostty"
-	
+        "$mainMod, Q, exec, ghostty"
+
         # Close currently focused window
-	"$mainMod, C, killactive,"
+        "$mainMod, C, killactive,"
 
-	# Gracefully shutdown Hyprland
-	# "$mainMod, M, hyprshutdown,"
+        # Gracefully shutdown Hyprland
+        # "$mainMod, M, hyprshutdown,"
 
-	# Force-shutdown Hyprland
-	"$secondaryMod, M, exit,"
+        # Force-shutdown Hyprland
+        "$secondaryMod, M, exit,"
 
-	# Lock the screen
-	# "$mainMod, ESCAPE, exec, hyprlock"
+        # Lock the screen
+        # "$mainMod, ESCAPE, exec, hyprlock"
 
-	# Run app launcher
-	# "$mainMod, SPACE, exec, rofi"
+        # Run app launcher
+        # "$mainMod, SPACE, exec, rofi"
 
-	# Window tile behaviors
-	"$mainMod, V, togglefloating,"
-	"$mainMod, J, togglesplit,"
+        # Window tile behaviors
+        "$mainMod, V, togglefloating,"
+        "$mainMod, J, togglesplit,"
 
-	# Move window focus with mainMod + arrow keys
-	"$mainMod, left, moveFocus, l"
-	"$mainMod, down, moveFocus, d"
-	"$mainMod, up, moveFocus, u"
-	"$mainMod, right, moveFocus, r"
+        # Move window focus with mainMod + arrow keys
+        "$mainMod, left, moveFocus, l"
+        "$mainMod, down, moveFocus, d"
+        "$mainMod, up, moveFocus, u"
+        "$mainMod, right, moveFocus, r"
 
-	# Move window focus with mainMod + Vim motion keys
-	"$mainMod, H, moveFocus, l"
-	"$mainMod, J, moveFocus, d"
-	"$mainMod, K, moveFocus, u"
-	"$mainMod, L, moveFocus, r"
+        # Move window focus with mainMod + Vim motion keys
+        "$mainMod, H, moveFocus, l"
+        "$mainMod, J, moveFocus, d"
+        "$mainMod, K, moveFocus, u"
+        "$mainMod, L, moveFocus, r"
 
-	# Cycle through workspaces with 
-	#   mainMod + scroll 
-	#   secondaryMod + arrow keys
-	#   secondaryMod + H/J Vim motion keys
-	"$mainMod, mouse_down, workspace, e+1"
-	"$mainMod, mouse_up, workspace, e-1"
-	"$secondaryMod, left, workspace, e-1"
-	"$secondaryMod, right, workspace, e+1"
-	"$secondaryMod, H, workspace, e-1"
-	"$secondaryMod, L, workspace, e+1"
+        # Cycle through workspaces with
+        #   mainMod + scroll
+        #   secondaryMod + arrow keys
+        #   secondaryMod + H/J Vim motion keys
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+        "$secondaryMod, left, workspace, e-1"
+        "$secondaryMod, right, workspace, e+1"
+        "$secondaryMod, H, workspace, e-1"
+        "$secondaryMod, L, workspace, e+1"
 
-	# Special workspaces (scratchpad)
-	"$mainMod, S, togglespecialworkspace, magic"
-	"$mainMod SHIFT, S, movetoworkspace, special:magic"
+        # Special workspaces (scratchpad)
+        "$mainMod, S, togglespecialworkspace, magic"
+        "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-	# Move / Resize windows with mainMod + LMB/RMB and dragging
-	"$mainMod, mouse:272, moveactive"
+        # Move / Resize windows with mainMod + LMB/RMB and dragging
+        "$mainMod, mouse:272, moveactive"
         "$mainMod, mouse:273, resizeactive"
 
-	# Switch workspaces with mainMod + [0-9]
-	"$mainMod, 1, workspace, 1"
-	"$mainMod, 2, workspace, 2"
-	"$mainMod, 3, workspace, 3"
-	"$mainMod, 4, workspace, 4"
-	"$mainMod, 5, workspace, 5"
-	"$mainMod, 6, workspace, 6"
-	"$mainMod, 7, workspace, 7"
-	"$mainMod, 8, workspace, 8"
-	"$mainMod, 9, workspace, 9"
-	"$mainMod, 0, workspace, 10"
+        # Switch workspaces with mainMod + [0-9]
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
 
-	# Move active window to workspace with secondaryMod + [0-9]
-	"$secondaryMod, 1, movetoworkspace, 1"
-	"$secondaryMod, 2, movetoworkspace, 2"
-	"$secondaryMod, 3, movetoworkspace, 3"
-	"$secondaryMod, 4, movetoworkspace, 4"
-	"$secondaryMod, 5, movetoworkspace, 5"
-	"$secondaryMod, 6, movetoworkspace, 6"
-	"$secondaryMod, 7, movetoworkspace, 7"
-	"$secondaryMod, 8, movetoworkspace, 8"
-	"$secondaryMod, 9, movetoworkspace, 9"
-	"$secondaryMod, 0, movetoworkspace, 10"
+        # Move active window to workspace with secondaryMod + [0-9]
+        "$secondaryMod, 1, movetoworkspace, 1"
+        "$secondaryMod, 2, movetoworkspace, 2"
+        "$secondaryMod, 3, movetoworkspace, 3"
+        "$secondaryMod, 4, movetoworkspace, 4"
+        "$secondaryMod, 5, movetoworkspace, 5"
+        "$secondaryMod, 6, movetoworkspace, 6"
+        "$secondaryMod, 7, movetoworkspace, 7"
+        "$secondaryMod, 8, movetoworkspace, 8"
+        "$secondaryMod, 9, movetoworkspace, 9"
+        "$secondaryMod, 0, movetoworkspace, 10"
       ];
 
-      monitor = [ ",preferred,auto,auto" ];
+      monitor = [",preferred,auto,auto"];
 
       # exec-once = [ "waybar" "hyprpaper" ];
 
       general = {
         gaps_in = 5;
-	gaps_out = 20;
+        gaps_out = 20;
 
-	border_size = 2;
+        border_size = 2;
 
-	resize_on_border = true;
+        resize_on_border = true;
       };
 
       decoration = {
         rounding = 5;
 
-	blur = {
+        blur = {
           enabled = true;
-	  size = 3;
-	};
+          size = 3;
+        };
 
-	shadow = {
+        shadow = {
           enabled = true;
-	  range = 4;
-	  render_power = 3;
-	};
+          range = 4;
+          render_power = 3;
+        };
       };
 
       dwindle = {
@@ -125,21 +129,21 @@
         # When disabled, split direction will not be influenced by mouse position
         smart_split = false;
 
-        # When there is only one tile on screen, enforce this aspect ration and center the tile. 
+        # When there is only one tile on screen, enforce this aspect ration and center the tile.
         # Useful on widescreen monitors so that app elements are not pushed to extreme sides of the screen.
         single_window_aspect_ratio = "4 3";
       };
 
       input = {
-	# follow_mouse = 2 indicates that mouse focus and keyboard
-	# focus are separate and moving a mouse to another panel 
-	# will not change keyboard focus.
-	follow_mouse = 2;
+        # follow_mouse = 2 indicates that mouse focus and keyboard
+        # focus are separate and moving a mouse to another panel
+        # will not change keyboard focus.
+        follow_mouse = 2;
       };
 
       misc = {
         disable_splash_rendering = true;
-	disable_hyprland_logo = true;
+        disable_hyprland_logo = true;
       };
 
       ecosystem = {
@@ -151,29 +155,29 @@
       windowrule = [
         # Ignore maximize requests from apps.
         "suppressevent maximize, class:.*"
-	
+
         # Fix some dragging issues with XWayland
-	"nofocus, class:^$, title:^$, xwayland:1, floating: 1, fullscreen:0, pinned:0"
+        "nofocus, class:^$, title:^$, xwayland:1, floating: 1, fullscreen:0, pinned:0"
       ];
 
       # Env variables
       env = [
         # Copied from autogenerated config
-	"XCURSOR_SIZE,24"
-	"HYPRCURSOR_SIZE,24"
-        
-	# Reference: https://wiki.hypr.land/0.52.0/Configuring/Environment-variables/
-	"GDK_BACKEND,wayland"
-	"QT_QPA_PLATFORM,wayland"
-	"SDL_VIDEODRIVER,wayland"
-	"CLUTTER_BACKEND,wayland"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
 
-	"XDG_CURRENT_DESKTOP,Hyprland"
-	"XDG_SESSION_TYPE,wayland"
-	"XDG_SESSION_DESKTOP,Hyprland"
-	
-	"QT_AUTO_SCREEN_SCALE_FACTOR,1"
-	# "QT_QPA_PLATFORMTHEME,qt5ct"
+        # Reference: https://wiki.hypr.land/0.52.0/Configuring/Environment-variables/
+        "GDK_BACKEND,wayland"
+        "QT_QPA_PLATFORM,wayland"
+        "SDL_VIDEODRIVER,wayland"
+        "CLUTTER_BACKEND,wayland"
+
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
+
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        # "QT_QPA_PLATFORMTHEME,qt5ct"
       ];
     };
   };
