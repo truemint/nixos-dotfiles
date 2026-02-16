@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures that packages used by home-manager come from the same nixpkgs version as that used by our flake
@@ -13,6 +12,8 @@
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
   };
 
   outputs = {nixpkgs, ...} @ flakeInputs: let
