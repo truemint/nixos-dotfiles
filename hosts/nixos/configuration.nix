@@ -18,9 +18,6 @@
     # Import the catppuccin/nix module
     flakeInputs.catppuccin.nixosModules.catppuccin
 
-    # Import the home-manager module
-    flakeInputs.home-manager.nixosModules.home-manager
-
     # Imports all config modules
     ../../nixosModules
   ];
