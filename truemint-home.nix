@@ -1,10 +1,12 @@
 {
   config,
   pkgs,
+  flakeInputs,
   ...
 }: {
   imports = [
     ./homeModules
+    flakeInputs.catppuccin.homeModules.catppuccin
   ];
 
   home = {

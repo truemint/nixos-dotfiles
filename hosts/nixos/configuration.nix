@@ -21,23 +21,9 @@
     # Import the home-manager module
     flakeInputs.home-manager.nixosModules.home-manager
 
-    # Imports the fonts module
+    # Imports all config modules
     ../../nixosModules
   ];
-
-  home-manager = {
-    useGlobalPkgs = true;
-    # useUserPackages = true;
-    backupFileExtension = "backup";
-    users = {
-      truemint = {
-        imports = [
-          ../../truemint-home.nix
-          flakeInputs.catppuccin.homeModules.catppuccin
-        ];
-      };
-    };
-  };
 
   catppuccin = {
     flavor = "mocha";
