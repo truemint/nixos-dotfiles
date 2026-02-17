@@ -14,7 +14,7 @@
     useGlobalPkgs = true;
     # useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit flakeInputs; };
+    extraSpecialArgs = {inherit flakeInputs;};
     users = {
       truemint = {
         imports = [
