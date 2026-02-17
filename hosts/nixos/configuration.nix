@@ -15,20 +15,12 @@
     # and is not reusable.
     /etc/nixos/hardware-configuration.nix
 
-    # Import the catppuccin/nix module
-    flakeInputs.catppuccin.nixosModules.catppuccin
-
     # Import the stylix nixos module to manage system theming
     flakeInputs.stylix.nixosModules.stylix
 
     # Imports all config modules
     ../../nixosModules
   ];
-
-  catppuccin = {
-    flavor = "mocha";
-    grub.enable = true;
-  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -52,37 +44,6 @@
 
   # Tells Linux kernel to make good use of the ZRAM swap
   boot.kernel.sysctl = {"vm.swapiness" = 60;};
-
-  # Set boot options
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      default = "saved"; # Boot in the last selected option
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-      gfxmodeEfi = "3440x1440";
-    };
-  };
-
-  boot.kernelParams = ["video=3440x1440"];
-
-  nixpkgs.config.allowUnfree = true;
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-    powerManagement.enable = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    open = true;
-  };
-
-  # Load nvidia drivers early to fix resolution for initial boot screens
-  boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
-  boot.extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.stable];
 
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
@@ -135,9 +96,6 @@
     users.truemint = {
       isNormalUser = true;
       extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
-        tree
-      ];
     };
   };
 
@@ -163,9 +121,7 @@
     btop # System monitor
     git # Version control
     bat # Replacement for cat
-    # kitty	# Default terminal for Hyprland
-    # waybar
-    # hyprpaper	# Wallpaper management
+    tree
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
