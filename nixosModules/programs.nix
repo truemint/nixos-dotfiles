@@ -29,4 +29,12 @@
 
   # Set up SSH agent
   programs.ssh.startAgent = true;
+
+  # Set up Neovim as an editor
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 }
