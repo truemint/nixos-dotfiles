@@ -24,27 +24,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Set Swap options
-  # zramSwap enables ZRAM for high-speed compressed swap
-  # swapDevices enable a swap file as a safety net in case ZRAM runs out
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 25; # Max size of the ZRAM device
-    priority = 100; # Higher priority than swap file means it's used first
-  };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 8192; # 8GB in MB
-      priority = 10; # Lower priority than zramSwap means it's used only when ZRAM is full
-    }
-  ];
-
-  # Tells Linux kernel to make good use of the ZRAM swap
-  boot.kernel.sysctl = {"vm.swapiness" = 60;};
-
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
   networking = {
@@ -92,37 +71,13 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
-    defaultUserShell = pkgs.zsh;
     users.truemint = {
       isNormalUser = true;
       extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     };
   };
 
-  programs.bash.enable = false;
-  programs.zsh.enable = true;
-
-  # Facilitates ZSH syntax completion for system commands
-  # Reference: http://www.mynixos.com/home-manager/option/programs.zsh.enableCompletion
-  environment.pathsToLink = ["/share/zsh"];
-
   programs.firefox.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  programs.ssh.startAgent = true;
-
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    neovim # Neovim editor
-    wget
-    btop # System monitor
-    git # Version control
-    bat # Replacement for cat
-    tree
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
