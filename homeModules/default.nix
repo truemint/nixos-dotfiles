@@ -8,5 +8,6 @@
     ./hyprland.nix
     ./terminal.nix
     ./wallpaper.nix
+    ./git.nix
   ];
 }
