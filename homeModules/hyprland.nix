@@ -9,7 +9,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    
+
     # Disable systemd integration as it conflicts with UWSM
     # Reference: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
     systemd.enable = false;
@@ -17,7 +17,7 @@
     settings = {
       "$mainMod" = "SUPER";
       "$secondaryMod" = "SUPER SHIFT";
-      
+
       bind = [
         # Start a terminal window
         "$mainMod, Q, exec, ghostty"
@@ -192,6 +192,6 @@
   # Hyprland module enables xdg-desktop-portal-hyprland; adding GTK portal is commonly recommended.
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 }
