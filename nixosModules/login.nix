@@ -39,8 +39,16 @@
 
   # Ensure that the D-Bus service for graphical prompts is active
   # so that apps can prompt if the keyring is locked
-  services.dbus.packages = [pkgs.gnome-keyring pkgs.gcr];
+  services.dbus.packages = [
+    pkgs.gnome-keyring
+    pkgs.gcr
+  ];
 
   # Polkit agent support (needed for privileged prompts)
   security.polkit.enable = true;
+
+  # This tells UWSM to include the keyring as part of the session
+  systemd.user.services.gnome-keyring = {
+    wantedBy = ["graphical-session.target"];
+  };
 }
