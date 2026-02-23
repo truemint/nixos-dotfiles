@@ -20,7 +20,7 @@
 
       bind = [
         # Start a terminal window
-        "$mainMod, Q, exec, ghostty"
+        "$mainMod, Q, exec, uwsm app -- ghostty"
 
         # Close currently focused window
         "$mainMod, C, killactive,"
@@ -35,7 +35,7 @@
         # "$mainMod, ESCAPE, exec, hyprlock"
 
         # Run app launcher
-        "$mainMod, SPACE, exec, rofi -show drun"
+        "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm app -- {cmd}\""
 
         # Window tile behaviors
         "$mainMod, V, togglefloating,"

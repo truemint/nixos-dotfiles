@@ -7,7 +7,17 @@
 }: {
   programs.rofi = {
     enable = true;
-    modes = ["drun" "run" "calc" "emoji"];
-    plugins = [pkgs.rofi-calc pkgs.rofi-emoji];
+
+    modes = [
+      "drun"
+      "run"
+      "calc"
+      "emoji"
+    ];
+
+    plugins = [
+      pkgs.rofi-calc
+      pkgs.rofi-emoji
+    ];
   };
 }
