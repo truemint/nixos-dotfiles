@@ -26,10 +26,10 @@
         "$mainMod, C, killactive,"
 
         # Gracefully shutdown Hyprland
-        # "$mainMod, M, hyprshutdown,"
+        "$secondaryMod, M, exec, uwsm stop"
 
         # Force-shutdown Hyprland
-        "$secondaryMod, M, exit,"
+        # "$secondaryMod, M, exit,"
 
         # Lock the screen
         # "$mainMod, ESCAPE, exec, hyprlock"
@@ -68,10 +68,6 @@
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        # Move / Resize windows with mainMod + LMB/RMB and dragging
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -95,6 +91,12 @@
         "$secondaryMod, 8, movetoworkspace, 8"
         "$secondaryMod, 9, movetoworkspace, 9"
         "$secondaryMod, 0, movetoworkspace, 10"
+      ];
+
+      # Bind mouse keys
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizeactive"
       ];
 
       monitor = [",preferred,auto,auto"];
