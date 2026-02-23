@@ -25,7 +25,11 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-  };
+
+# Run Hyprland with UWSM for session management
+    withUWSM = true;
+
+};
 
   # Set up Neovim as an editor
   programs.neovim = {

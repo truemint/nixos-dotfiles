@@ -9,9 +9,15 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    
+    # Disable systemd integration as it conflicts with UWSM
+    # Reference: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
+    systemd.enable = false;
+
     settings = {
       "$mainMod" = "SUPER";
       "$secondaryMod" = "SUPER SHIFT";
+      
       bind = [
         # Start a terminal window
         "$mainMod, Q, exec, ghostty"
@@ -63,8 +69,8 @@
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Move / Resize windows with mainMod + LMB/RMB and dragging
-        "$mainMod, mouse:272, moveactive"
-        "$mainMod, mouse:273, resizeactive"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -92,8 +98,6 @@
       ];
 
       monitor = [",preferred,auto,auto"];
-
-      # exec-once = [ "waybar" "hyprpaper" ];
 
       general = {
         gaps_in = 5;
@@ -183,4 +187,11 @@
   };
 
   catppuccin.hyprland.enable = true;
+
+  # Portals (screen share, file pickers, etc.)
+  # Hyprland module enables xdg-desktop-portal-hyprland; adding GTK portal is commonly recommended.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 }
