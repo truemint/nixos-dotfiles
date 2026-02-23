@@ -182,6 +182,9 @@
     # Reference: https://wiki.hypr.land/0.52.0/Configuring/Multi-GPU/
     # AQ_DRM_DEVICES = "";
 
+    # Helps Chromium/Electron apps prefer native Wayland instead of XWayland on NixOS.
+    NIXOS_OZONE_WL = "1";
+
     # Toolkit variables
     GDK_BACKEND = "wayland";
     QT_QPA_PLATFORM = "wayland";
