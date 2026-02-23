@@ -12,6 +12,7 @@
 
     # Disable systemd integration as it conflicts with UWSM
     # Reference: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
+    # Reference: https://wiki.nixos.org/wiki/UWSM
     systemd.enable = false;
 
     settings = {
