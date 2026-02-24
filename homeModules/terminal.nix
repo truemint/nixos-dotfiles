@@ -19,11 +19,27 @@
     enable = true;
 
     enableCompletion = true;
-    autosuggestion.enable = true;
+
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=#ff00ff,bg=cyan,bold,underline";
+    };
+    
     syntaxHighlighting = {
       enable = true;
       highlighters = ["main" "brackets"];
+      # styles = {};
     };
+
+    # Set ZSH to default to Vim keys. This implicitly happens if Vi/Vim/Neovim are set as default editors on the system. Declaring this here explicitly makes our system more deterministic.
+    defaultKeymap = "viins";
+
+    # Set Ctrl+R to command history search
+    # This is default is emacs keymap, but in vi keymap Ctrl+R is set to something else. We change this explicitly to our preferred mapping.
+    # bindkey "^R" history-incremental-search-backward
+
+    # Enable history searching using up/down keys. 
+    historySubstringSearch.enable = true;
 
     history = {
       size = 5000;
@@ -47,6 +63,13 @@
       test-zsh = "echo \'Truemint test\'";
     };
   };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  catppuccin.fzf.enable = true;
 
   programs.starship = {
     enable = true;
