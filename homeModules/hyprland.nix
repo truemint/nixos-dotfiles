@@ -153,6 +153,11 @@
         disable_hyprland_logo = true;
       };
 
+      debug = {
+        # Enable debug logs. This is true (disabled) by default.
+        disable_logs = false;
+      };
+
       ecosystem = {
         no_donation_nag = true;
       };
