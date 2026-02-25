@@ -24,7 +24,7 @@
       enable = true;
       highlight = "fg=#ff00ff,bg=cyan,bold,underline";
     };
-    
+
     syntaxHighlighting = {
       enable = true;
       highlighters = ["main" "brackets"];
@@ -38,7 +38,7 @@
     # This is default is emacs keymap, but in vi keymap Ctrl+R is set to something else. We change this explicitly to our preferred mapping.
     # bindkey "^R" history-incremental-search-backward
 
-    # Enable history searching using up/down keys. 
+    # Enable history searching using up/down keys.
     historySubstringSearch.enable = true;
 
     history = {
