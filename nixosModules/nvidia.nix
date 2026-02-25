@@ -16,7 +16,7 @@
       enable = true;
 
       # Also install 32-bit drivers for 32-bit applications (such as Wine)
-      enable32bit = true;
+      enable32Bit = true;
     };
 
     amdgpu = {
