@@ -10,6 +10,12 @@
     enable = true;
     xwayland.enable = true;
 
+    # Set the flake package
+    package = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+    # Set the portal package from same flake to keep them in sync
+    portalPackage = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
     # Disable systemd integration as it conflicts with UWSM
     # Reference: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
     # Reference: https://wiki.nixos.org/wiki/UWSM
@@ -97,8 +103,8 @@
 
       # Bind mouse keys
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizeactive"
+        "$mainMod, mouse:272, moveactive,"
+        "$mainMod, mouse:273, resizeactive,"
       ];
 
       # Set the preferred resolution and refresh rate for the monitor
