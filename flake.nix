@@ -19,6 +19,17 @@
       url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vicinae.url = "github:vicinaehq/vicinae";
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://vicinae.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+    ];
   };
 
   outputs = {nixpkgs, ...} @ flakeInputs: let

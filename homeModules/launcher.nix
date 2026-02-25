@@ -2,7 +2,7 @@
 {
   config,
   pkgs,
-  lib,
+  flakeInputs,
   ...
 }: {
   programs.rofi = {
@@ -21,8 +21,8 @@
     ];
   };
 
+  imports = [flakeInputs.vicinae.homeManagerModules.default];
   services.vicinae = {
-    package = pkgs.vicinae;
     enable = true;
     # settings reference: https://github.com/vicinaehq/vicinae/blob/main/extra/config.jsonc
     settings = {

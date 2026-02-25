@@ -22,7 +22,12 @@
     ../../nixosModules
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+
+    # All users who are a part of wheel group are considered trusted users
+    trusted-users = ["@wheel"];
+  };
 
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
