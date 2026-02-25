@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures that packages used by home-manager come from the same nixpkgs version as that used by our flake
     };
 
+    hyprland.url = "github:hyprwm/Hyprland/v0.53.3";
+
     alejandra = {
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
