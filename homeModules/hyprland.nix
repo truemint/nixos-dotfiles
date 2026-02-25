@@ -180,7 +180,10 @@
 
     # Aquamarine env var to set an explicit list of GPUs to use
     # Reference: https://wiki.hypr.land/0.52.0/Configuring/Multi-GPU/
-    # AQ_DRM_DEVICES = "";
+    # Setting this to the AMD card path `/dev/dri/renderD129` ensures that Hyprland will use the AMD iGPU.
+    # Since we haven't included the Nvidia GPU path in this list, Hyprland will not touch the Nvidia dGPU at all.
+    AQ_DRM_DEVICES = "/dev/dri/renderD129";
+    # WLR_DRM_DEVICES = "/dev/dri/renderD129";	# Used by wlroots based compositors. Deprecated by Hyprland.
 
     # Helps Chromium/Electron apps prefer native Wayland instead of XWayland on NixOS.
     NIXOS_OZONE_WL = "1";
