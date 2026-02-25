@@ -48,7 +48,7 @@
   security.polkit.enable = true;
 
   # This tells UWSM to include the keyring as part of the session
-  systemd.user.services.gnome-keyring = {
-    wantedBy = ["graphical-session.target"];
-  };
+  # systemd.user.services.gnome-keyring = {
+  #   wantedBy = ["graphical-session.target"];
+  # };
 }
