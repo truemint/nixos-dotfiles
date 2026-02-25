@@ -36,7 +36,8 @@
         # "$mainMod, ESCAPE, exec, hyprlock"
 
         # Run app launcher
-        "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm app -- {cmd}\""
+        # "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm app -- {cmd}\""
+        "$mainMod, SPACE, exec, vicinae toggle"
 
         # Window tile behaviors
         "$mainMod, V, togglefloating,"

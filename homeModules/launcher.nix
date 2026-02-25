@@ -6,7 +6,7 @@
   ...
 }: {
   programs.rofi = {
-    enable = true;
+    enable = false;
 
     modes = [
       "drun"
@@ -19,5 +19,29 @@
       pkgs.rofi-calc
       pkgs.rofi-emoji
     ];
+  };
+
+  services.vicinae = {
+    enable = true;
+    # settings reference: https://github.com/vicinaehq/vicinae/blob/main/extra/config.jsonc
+    settings = {
+      close_on_focus_loss = true;
+      launcher_window = {
+        opacity = 0.98;
+      };
+
+      providers = {
+        applications = {
+          preferences = {
+            launchPrefix = "uwsm app -- ";
+          };
+        };
+      };
+    };
+    systemd = {
+      enable = true;
+      autoStart = true;
+      target = "graphical-session.target";
+    };
   };
 }
