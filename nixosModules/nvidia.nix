@@ -22,7 +22,7 @@
     amdgpu = {
       # Enable loading amdgpu kernel module in stage 1.
       # This helps with low resolution issues during early boot phases.
-      initrd.enable = true;
+      # initrd.enable = true;
     };
 
     nvidia = {
