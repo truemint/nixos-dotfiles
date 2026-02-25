@@ -100,7 +100,9 @@
         "$mainMod, mouse:273, resizeactive"
       ];
 
-      monitor = [",preferred,auto,auto"];
+      # Set the preferred resolution and refresh rate for the monitor
+      # We are setting the refresh rate to a value lower than our monitor's highest supported rate of 160Hz to fix an issue with screen flickering
+      monitor = ["DP-1,3440x1440@143.97,auto,1"];
 
       general = {
         gaps_in = 5;
