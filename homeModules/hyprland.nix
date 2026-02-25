@@ -101,8 +101,7 @@
       ];
 
       # Set the preferred resolution and refresh rate for the monitor
-      # We are setting the refresh rate to a value lower than our monitor's highest supported rate of 160Hz to fix an issue with screen flickering
-      monitor = ["DP-1,3440x1440@143.97,auto,1"];
+      monitor = [",preferred,auto,auto"];
 
       general = {
         gaps_in = 5;
@@ -155,10 +154,10 @@
         disable_hyprland_logo = true;
       };
 
-      debug = {
-        # Enable debug logs. This is true (disabled) by default.
-        disable_logs = false;
-      };
+      # debug = {
+      # Enable debug logs. This is true (disabled) by default.
+      # disable_logs = false;
+      # };
 
       ecosystem = {
         no_donation_nag = true;
