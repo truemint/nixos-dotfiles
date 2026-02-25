@@ -66,11 +66,11 @@
   # Set of environment variables used in the global environment.
   # We set relevant variables to force system to use AMD iGPU instead of Nvidia dGPU.
   # We will also need to set Hyprland specific variables. See Hyprland config.
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "radeonsi";
-    GBM_BACKEND = "radeonsi";
-    __GLX_VENDOR_LIBRARY_NAME = "mesa";
-  };
+  # environment.sessionVariables = {
+  #  LIBVA_DRIVER_NAME = "radeonsi";
+  #  GBM_BACKEND = "radeonsi";
+  #  __GLX_VENDOR_LIBRARY_NAME = "mesa";
+  # };
 
   # Load nvidia drivers early to fix resolution issues with boot screens
   # boot = {

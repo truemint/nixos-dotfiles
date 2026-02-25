@@ -183,7 +183,7 @@
     # Setting this to the AMD card path `/dev/dri/renderD129` ensures that Hyprland will use the AMD iGPU.
     # Since need to include the Nvidia GPU path in this list since our monitor is physically connected to the Nvidia card.
     # If we don't do this, the monitor will not work. However, since we have set the AMD card as the default, Hyprland should not touch the Nvidia dGPU at all.
-    AQ_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
+    # AQ_DRM_DEVICES = "/dev/dri/card0:/dev/dri/card1";
     # WLR_DRM_DEVICES = "/dev/dri/renderD129:/dev/dri/renderD128";	# Used by wlroots based compositors. Deprecated by Hyprland.
 
     # Helps Chromium/Electron apps prefer native Wayland instead of XWayland on NixOS.
