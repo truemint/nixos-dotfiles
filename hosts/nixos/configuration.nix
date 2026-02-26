@@ -15,9 +15,6 @@
     # and is not reusable.
     /etc/nixos/hardware-configuration.nix
 
-    # Import the stylix nixos module to manage system theming
-    flakeInputs.stylix.nixosModules.stylix
-
     # Imports all config modules
     ../../nixosModules
   ];

@@ -103,8 +103,8 @@
 
       # Bind mouse keys
       bindm = [
-        "$mainMod, mouse:272, moveactive,"
-        "$mainMod, mouse:273, resizeactive,"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizeactive"
       ];
 
       # Set the preferred resolution and refresh rate for the monitor
