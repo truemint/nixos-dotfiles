@@ -14,7 +14,7 @@
       package = pkgs.kdePackages.sddm; # Install the qt6 SDDM version
       # extraPackages = [pkgs.sddm-astronaut];
       # theme = "sddm-astronaut-theme";
-      theme = "breeze";
+      # theme = "breeze";
     };
   };
   # environment.systemPackages = [pkgs.sddm-astronaut];

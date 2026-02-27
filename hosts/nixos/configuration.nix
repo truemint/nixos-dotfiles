@@ -25,6 +25,12 @@
     trusted-users = ["@wheel"];
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style = "kvantum";
+  };
+
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
   networking = {
