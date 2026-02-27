@@ -12,13 +12,12 @@
       enable = true;
       wayland.enable = true;
       package = pkgs.kdePackages.sddm; # Install the qt6 SDDM version
-      extraPackages = [
-        pkgs.sddm-astronaut
-      ];
-      theme = "sddm-astronaut-theme";
+      # extraPackages = [pkgs.sddm-astronaut];
+      # theme = "sddm-astronaut-theme";
+      theme = "breeze";
     };
   };
-  environment.systemPackages = [pkgs.sddm-astronaut];
+  # environment.systemPackages = [pkgs.sddm-astronaut];
 
   # Set up gnome-keyring
   services.gnome.gnome-keyring.enable = true;

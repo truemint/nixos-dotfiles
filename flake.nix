@@ -27,9 +27,8 @@
 
   outputs = {nixpkgs, ...} @ flakeInputs: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
   in {
-    formatter.${system} = pkgs.alejandra;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
     nixosConfigurations.Truemint-NixOS = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit flakeInputs system;};
       modules = [./hosts/nixos/configuration.nix];
