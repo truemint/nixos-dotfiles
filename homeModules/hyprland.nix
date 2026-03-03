@@ -6,6 +6,32 @@
   flakeInputs,
   ...
 }: {
+  # Enable UWSM
+  programs.uwsm.enable = true;
+
+  # Set up Hyprland to auto-start when we login from tty
+  programs.zsh.loginExtra = ''
+       # Check if we are in tty1 and not already in a graphical session
+       if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+         # Ensure that the environment supports a USWM session
+         if uwsm check may-start; then
+           echo -n "Starting Hyprland in 5 seconds. Press any key to abort..."
+
+    # Interactive fail-safe (timeout)
+    if read -k 1 -t 5; then
+      echo -e "\nAborted. Dropping to TTY shell."
+           else
+      echo -e "\nLaunching Hyprland via UWSM..."
+
+      # Replace shell with USWM session
+      exec uwsm start hyprland-uwsm.desktop
+    fi
+         else
+           echo "UWSM: Environment not ready for a session. Staying in TTY."
+         fi
+       fi
+  '';
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -171,16 +197,16 @@
         "match:class .*, suppress_event maximize"
 
         # Fix some dragging issues with XWayland
-        {
-          name = "fix-wayland-drags";
-          "match:class" = "^$";
-          "match:title" = "^$";
-          "match:xwayland" = true;
-          "match:float" = true;
-          "match:fullscreen" = false;
-          "match:pin" = false;
-          "no_focus" = true;
-        }
+        #{
+        #  name = "fix-wayland-drags";
+        #  "match:class" = "^$";
+        #  "match:title" = "^$";
+        #  "match:xwayland" = true;
+        #  "match:float" = true;
+        #  "match:fullscreen" = false;
+        #  "match:pin" = false;
+        #  "no_focus" = true;
+        #}
       ];
     };
   };
