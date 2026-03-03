@@ -6,9 +6,6 @@
   flakeInputs,
   ...
 }: {
-  # Enable UWSM
-  programs.uwsm.enable = true;
-
   # Set up Hyprland to auto-start when we login from tty
   programs.zsh.loginExtra = ''
        # Check if we are in tty1 and not already in a graphical session
