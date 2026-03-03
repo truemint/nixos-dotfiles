@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  flakeInputs,
   ...
 }: {
   # Setup Hyprland as the window tiling manager
