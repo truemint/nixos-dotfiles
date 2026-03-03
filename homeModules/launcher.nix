@@ -27,14 +27,11 @@
     # settings reference: https://github.com/vicinaehq/vicinae/blob/main/extra/config.jsonc
     settings = {
       close_on_focus_loss = true;
-      # launcher_window = {
-      #  opacity = 0.98;
-      # };
 
       providers = {
         applications = {
           preferences = {
-            launchPrefix = "uwsm app -- ";
+            launchPrefix = "uwsm-app -- ";
           };
         };
       };

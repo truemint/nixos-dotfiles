@@ -27,22 +27,19 @@
 
       bind = [
         # Start a terminal window
-        "$mainMod, Q, exec, uwsm app -- ghostty"
+        "$mainMod, Q, exec, uwsm-app -- ghostty"
 
         # Close currently focused window
         "$mainMod, C, killactive,"
 
-        # Gracefully shutdown Hyprland
+        # Gracefully shutdown all UWSM managed services including Hyprland
         "$secondaryMod, M, exec, uwsm stop"
-
-        # Force-shutdown Hyprland
-        # "$secondaryMod, M, exit,"
 
         # Lock the screen
         # "$mainMod, ESCAPE, exec, hyprlock"
 
         # Run app launcher
-        # "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm app -- {cmd}\""
+        # "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm-app -- {cmd}\""
         "$mainMod, SPACE, exec, vicinae toggle"
 
         # Window tile behaviors
