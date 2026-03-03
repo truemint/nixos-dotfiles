@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  myConfig,
   ...
 }: {
   imports = [
@@ -34,7 +35,7 @@
   # Set networking options
   # Configure network connections interactively with nmcli or nmtui
   networking = {
-    hostName = "Truemint-NixOS";
+    hostName = myConfig.hostName;
     networkmanager.enable = true;
   };
 

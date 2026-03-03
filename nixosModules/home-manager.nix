@@ -4,6 +4,7 @@
   lib,
   pkgs,
   flakeInputs,
+  myConfig,
   ...
 }: {
   imports = [
@@ -14,9 +15,9 @@
     useGlobalPkgs = true;
     # useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = {inherit flakeInputs;};
+    extraSpecialArgs = {inherit flakeInputs myConfig;};
     users = {
-      truemint = {
+      "${myConfig.userName}" = {
         imports = [
           ../truemint-home.nix
         ];

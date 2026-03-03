@@ -7,7 +7,8 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
 
-      # Ensure that packages used by home-manager come from the same nixpkgs version as that used by our flake
+      # Ensure that packages used by home-manager come from the same nixpkgs version
+      # as that used by our flake
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -29,10 +30,14 @@
 
   outputs = {nixpkgs, ...} @ flakeInputs: let
     system = "x86_64-linux";
+    myConfig = {
+      hostName = "skyforge";
+      userName = "truemint";
+    };
   in {
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-    nixosConfigurations.Truemint-NixOS = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit flakeInputs system;};
+    nixosConfigurations.${myConfig.hostName} = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit flakeInputs system myConfig;};
       modules = [./hosts/nixos/configuration.nix];
     };
   };

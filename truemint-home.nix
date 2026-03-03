@@ -2,6 +2,7 @@
   config,
   pkgs,
   flakeInputs,
+  myConfig,
   ...
 }: {
   imports = [
@@ -10,7 +11,7 @@
   ];
 
   home = {
-    username = "truemint";
+    username = myConfig.userName;
     preferXdgDirectories = true;
     homeDirectory = "/home/truemint";
     stateVersion = "25.11";
