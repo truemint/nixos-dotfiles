@@ -5,19 +5,21 @@
   ...
 }: {
   # Set up SDDM as the display manager / login manager
-  services.displayManager = {
-    enable = true;
-    # defaultSession = "hyprland";
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm; # Install the qt6 SDDM version
-      # extraPackages = [pkgs.sddm-astronaut];
-      # theme = "sddm-astronaut-theme";
-      # theme = "breeze";
-    };
-  };
-  # environment.systemPackages = [pkgs.sddm-astronaut];
+  #services.displayManager = {
+  #  enable = true;
+  #  sddm = {
+  #    enable = true;
+  #    wayland.enable = true;
+  #    # wayland.compositor = "kwin";
+  #    package = pkgs.kdePackages.sddm; # Install the qt6 SDDM version
+  #    extraPackages = [pkgs.sddm-astronaut];
+  #    theme = "sddm-astronaut-theme";
+  #  };
+  #};
+  #environment.systemPackages = [pkgs.sddm-astronaut];
+
+  # We have set up auto-start for Hyprland when we log in from tty
+  # These settings are available along with Hyprland config
 
   # Set up gnome-keyring
   services.gnome.gnome-keyring.enable = true;
