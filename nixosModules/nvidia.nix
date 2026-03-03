@@ -8,7 +8,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # The names of the video drivers the configuration supports.
-  services.xserver.videoDrivers = ["amdgpu" "nvidia"];
+  # services.xserver.videoDrivers = ["amdgpu" "nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
     graphics = {
@@ -73,14 +74,14 @@
   # };
 
   # Load nvidia drivers early to fix resolution issues with boot screens
-  # boot = {
-  #  initrd.kernelModules = [
-  #    "nvidia"
-  #    "nvidia_modeset"
-  #    "nvidia_uvm"
-  #    "nvidia_drm"
-  #  ];
+  boot = {
+    #  initrd.kernelModules = [
+    #    "nvidia"
+    #    "nvidia_modeset"
+    #    "nvidia_uvm"
+    #    "nvidia_drm"
+    #  ];
 
-  #  extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.stable];
-  # };
+    extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.stable];
+  };
 }
