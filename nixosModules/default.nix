@@ -10,6 +10,6 @@
     ./login.nix
     ./home-manager.nix
     ./fonts.nix
-    ./programs.nix
+    ./programs
   ];
 }
