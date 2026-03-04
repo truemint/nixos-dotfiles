@@ -36,10 +36,6 @@
     # Set ZSH to default to Vim keys. This implicitly happens if Vi/Vim/Neovim are set as default editors on the system. Declaring this here explicitly makes our system more deterministic.
     defaultKeymap = "viins";
 
-    # Set Ctrl+R to command history search
-    # This is default is emacs keymap, but in vi keymap Ctrl+R is set to something else. We change this explicitly to our preferred mapping.
-    # bindkey "^R" history-incremental-search-backward
-
     # Enable history searching using up/down keys.
     historySubstringSearch.enable = true;
 
@@ -56,13 +52,10 @@
         "exit"
         "pwd"
         "passwd"
+        "shutdown *"
+        "reboot"
+        "logout"
       ];
-    };
-
-    shellAliases = {
-      ls = "ls --color=auto";
-      grep = "grep --color=auto";
-      test-zsh = "echo \'Truemint test\'";
     };
   };
 
@@ -75,14 +68,17 @@
 
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
+
+    # `enableZshIntegration = true` will add the `eval ("starship init zsh")` line
+    # to .zshrc so that the prompt can be initiated. However, this also initiates
+    # the prompt on tty where nerd fonts are not supported and colors are poor.
+    # We need to add a check to not initialize starship in tty. Since we will do that
+    # manually, we disable the built-in option here.
+    enableZshIntegration = false;
+
     settings = {
       format = lib.concatStrings [
         "[░▒▓](fg:peach)"
-        # "[](red)"
-        # "$os"
-        # "$username"
-        # "[](bg:peach fg:red)"
         "$directory"
         "[](bg:yellow fg:peach)"
         "$git_branch"
@@ -92,13 +88,7 @@
         "$rust"
         "$golang"
         "$nodejs"
-        # "$php"
-        # "$java"
-        # "$kotlin"
-        # "$haskell"
-        # "$python"
         "[](fg:green bg:sapphire)"
-        # "$conda"
         "$git_state"
         "[](fg:sapphire bg:lavender)"
         "$time"
@@ -107,55 +97,14 @@
         "$line_break"
         "$character"
       ];
-      os = {
-        disabled = true;
-        style = "bg:red fg:crust";
-        symbols = {
-          Windows = "";
-          Ubuntu = "󰕈";
-          SUSE = "";
-          Raspbian = "󰐿";
-          Mint = "󰣭";
-          Macos = "󰀵";
-          Manjaro = "";
-          Linux = "󰌽";
-          Gentoo = "󰣨";
-          Fedora = "󰣛";
-          Alpine = "";
-          Amazon = "";
-          Android = "";
-          AOSC = "";
-          Arch = "󰣇";
-          Artix = "󰣇";
-          CentOS = "";
-          Debian = "󰣚";
-          Redhat = "󱄛";
-          RedHatEnterprise = "󱄛";
-        };
-      };
-
-      username = {
-        disabled = true;
-        show_always = true;
-        style_user = "bg:red fg:crust";
-        style_root = "bg:red fg:crust";
-        format = "[ $user]($style)";
-      };
 
       directory = {
         style = "bg:peach fg:crust";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
-
-        substitutions = {
-          "Documents" = "󰈙 ";
-          "Downloads" = " ";
-          "Music" = "󰝚 ";
-          "Pictures" = " ";
-          "Developer" = "󰲋 ";
-        };
       };
+
       git_branch = {
         symbol = "";
         style = "bg:yellow";
@@ -196,36 +145,6 @@
         format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
       };
 
-      php = {
-        symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
-      };
-
-      java = {
-        symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
-      };
-
-      kotlin = {
-        symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
-      };
-
-      haskell = {
-        symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
-      };
-
-      python = {
-        symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)";
-      };
-
       time = {
         disabled = false;
         time_format = "%R";
@@ -254,4 +173,14 @@
     };
   };
   catppuccin.starship.enable = true;
+
+  # Initialize starship prompt in ZSH
+  # We are adding these lines to .zshrc. The conditional checks ensure that
+  # starship prompt is not initialized in TTY or in terminals where required
+  # features are not supported.
+  programs.zsh.initContent = ''
+    if [[ $TERM != "dumb" ]] && [[ $TERM != "linux" ]]; then
+      eval "$(${pkgs.starship}/bin/starship init zsh)"
+    fi
+  '';
 }
