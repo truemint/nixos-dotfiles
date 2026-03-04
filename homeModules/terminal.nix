@@ -181,6 +181,8 @@
   programs.zsh.initContent = ''
     if [[ $TERM != "dumb" ]] && [[ $TERM != "linux" ]]; then
       eval "$(${pkgs.starship}/bin/starship init zsh)"
+    else
+      PROMPT="%n@%m %F{green}%0~%f > "
     fi
   '';
 }
