@@ -2,8 +2,16 @@
 {
   config,
   pkgs,
+  myConfig,
   ...
 }: {
+  # Setting up auto-login for primary user
+  # This is okay from security perspective since we have full disk encryption
+  services.getty = {
+    autologinUser = myConfig.userName;
+    autologinOnce = true;
+  };
+
   # We have set up auto-start for Hyprland when we log in from tty
   # These settings are available along with Hyprland config
 
