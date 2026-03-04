@@ -22,7 +22,7 @@
 
       # Replace shell with USWM session
       # exec uwsm start hyprland-uwsm.desktop
-      exec uwsm start -e -D Hyprland -N Hyprland -- start-hyprland
+      exec uwsm start -e -D Hyprland -N Hyprland -- /run/current-system/sw/bin/start-hyprland
     fi
          else
            echo "UWSM: Environment not ready for a session. Staying in TTY."
