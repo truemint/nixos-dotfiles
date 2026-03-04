@@ -21,4 +21,12 @@
     # Run Hyprland with UWSM for session management
     withUWSM = true;
   };
+
+  # Portals (screen share, file pickers, etc.)
+  # Hyprland module enables xdg-desktop-portal-hyprland; adding GTK portal is commonly recommended.
+  # Reference: https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
 }

@@ -21,7 +21,8 @@
       echo -e "\nLaunching Hyprland via UWSM..."
 
       # Replace shell with USWM session
-      exec uwsm start hyprland-uwsm.desktop
+      # exec uwsm start hyprland-uwsm.desktop
+      exec uwsm start -e -D Hyprland -N Hyprland -- start-hyprland
     fi
          else
            echo "UWSM: Environment not ready for a session. Staying in TTY."
@@ -34,10 +35,16 @@
     xwayland.enable = true;
 
     # Set the flake package
-    package = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # package = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = null;
 
     # Set the portal package from same flake to keep them in sync
-    portalPackage = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    #portalPackage = flakeInputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage = null;
+
+    # Setting package and portalPackage to null since we have
+    # already installed Hyprland as a NixOS module
+    # Reference: https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
 
     # Disable systemd integration as it conflicts with UWSM
     # Reference: https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
@@ -243,11 +250,4 @@
   # Make env variables available to UWSM
   # Reference: https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#nixos-uwsm
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
-
-  # Portals (screen share, file pickers, etc.)
-  # Hyprland module enables xdg-desktop-portal-hyprland; adding GTK portal is commonly recommended.
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  };
 }

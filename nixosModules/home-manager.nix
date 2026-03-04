@@ -1,19 +1,14 @@
 # Home Manager config
 {
-  config,
-  lib,
-  pkgs,
   flakeInputs,
   myConfig,
   ...
 }: {
-  imports = [
-    flakeInputs.home-manager.nixosModules.home-manager
-  ];
+  imports = [flakeInputs.home-manager.nixosModules.home-manager];
 
   home-manager = {
     useGlobalPkgs = true;
-    # useUserPackages = true;
+    useUserPackages = true;
     backupFileExtension = "backup";
     extraSpecialArgs = {inherit flakeInputs myConfig;};
     users = {
