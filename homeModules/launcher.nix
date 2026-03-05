@@ -5,22 +5,6 @@
   flakeInputs,
   ...
 }: {
-  programs.rofi = {
-    enable = false;
-
-    modes = [
-      "drun"
-      "run"
-      "calc"
-      "emoji"
-    ];
-
-    plugins = [
-      pkgs.rofi-calc
-      pkgs.rofi-emoji
-    ];
-  };
-
   imports = [flakeInputs.vicinae.homeManagerModules.default];
   services.vicinae = {
     enable = true;
@@ -28,14 +12,18 @@
     settings = {
       close_on_focus_loss = true;
 
+      # Entry-point specific configuration
       providers = {
         applications = {
           preferences = {
+            # Ensure that all apps launched by Vicinae are managed by UWSM
             launchPrefix = "uwsm-app -- ";
           };
         };
       };
     };
+
+    # Ensure that Vicinae daemon is started whenever a graphical session is started
     systemd = {
       enable = true;
       autoStart = true;
