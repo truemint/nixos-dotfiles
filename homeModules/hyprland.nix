@@ -174,10 +174,14 @@
       };
 
       input = {
-        # follow_mouse = 2 indicates that mouse focus and keyboard
-        # focus are separate and moving a mouse to another panel
-        # will not change keyboard focus.
+        # `follow_mouse = 2` indicates that mouse focus and keyboard focus
+        # are separate and moving a mouse to another panel will not change
+        # keyboard focus, but you will still be able to scroll in that panel.
         follow_mouse = 2;
+
+        # `float_switch_override = 0` indicates that focus should not move
+        # when mouse moves between a tiled and a floating window.
+        float_switch_override_focus = 0;
       };
 
       misc = {
