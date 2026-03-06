@@ -159,7 +159,7 @@
       layout = {
         # When there is only one tile on screen, enforce this aspect ration and center the tile.
         # Useful on widescreen monitors so that app elements are not pushed to extreme sides of the screen.
-        single_window_aspect_ratio = "4 3";
+        single_window_aspect_ratio = "3 2";
       };
 
       dwindle = {
