@@ -54,6 +54,7 @@
     settings = {
       "$mainMod" = "SUPER";
       "$secondaryMod" = "SUPER SHIFT";
+      "$tertiaryMod" = "SUPER SHIFT CTRL";
 
       bind = [
         # Start a terminal window
@@ -62,6 +63,9 @@
         # Close currently focused window
         "$mainMod, C, killactive,"
 
+        # Force-kill the currently focused window
+        "$secondaryMod, C, forcekillactive,"
+
         # Gracefully shutdown all UWSM managed services including Hyprland
         "$secondaryMod, M, exec, uwsm stop"
 
@@ -69,12 +73,17 @@
         # "$mainMod, ESCAPE, exec, hyprlock"
 
         # Run app launcher
-        # "$mainMod, SPACE, exec, rofi -show drun -run-command \"uwsm-app -- {cmd}\""
         "$mainMod, SPACE, exec, vicinae toggle"
 
         # Window tile behaviors
         "$mainMod, V, togglefloating,"
-        "$mainMod, J, togglesplit,"
+        "$mainMod, J, layoutmsg, togglesplit"
+
+        # Set full-screen mode for active window
+        #  0 - fullscreen (expand to entire screen)
+        #  1 - maximize (keep gaps and bar(s))
+        "$mainMod, F11, fullscreen, 1 toggle"
+        "$secondaryMod, F11, fullscreen, 0 toggle"
 
         # Move window focus with mainMod + arrow keys
         "$mainMod, left, moveFocus, l"
@@ -126,6 +135,18 @@
         "$secondaryMod, 8, movetoworkspace, 8"
         "$secondaryMod, 9, movetoworkspace, 9"
         "$secondaryMod, 0, movetoworkspace, 10"
+
+        # Silently move active window to workspace with secondaryMod + Ctrl + [0-9]
+        "$tertiaryMod, 1, movetoworkspacesilent, 1"
+        "$tertiaryMod, 2, movetoworkspacesilent, 2"
+        "$tertiaryMod, 3, movetoworkspacesilent, 3"
+        "$tertiaryMod, 4, movetoworkspacesilent, 4"
+        "$tertiaryMod, 5, movetoworkspacesilent, 5"
+        "$tertiaryMod, 6, movetoworkspacesilent, 6"
+        "$tertiaryMod, 7, movetoworkspacesilent, 7"
+        "$tertiaryMod, 8, movetoworkspacesilent, 8"
+        "$tertiaryMod, 9, movetoworkspacesilent, 9"
+        "$tertiaryMod, 0, movetoworkspacesilent, 10"
       ];
 
       # Bind mouse keys
