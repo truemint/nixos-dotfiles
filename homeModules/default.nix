@@ -9,5 +9,6 @@
     ./terminal.nix
     ./wallpaper.nix
     ./git.nix
+    ./filen.nix
   ];
 }
