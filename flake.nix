@@ -2,10 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
 
       # Ensure that packages used by home-manager come from the same nixpkgs version
       # as that used by our flake
@@ -13,7 +13,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
+    catppuccin.url = "github:catppuccin/nix";
     vicinae.url = "github:vicinaehq/vicinae";
   };
 
