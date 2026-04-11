@@ -15,6 +15,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
     catppuccin.url = "github:catppuccin/nix";
     vicinae.url = "github:vicinaehq/vicinae";
+
+    opencode.url = "github:anomalyco/opencode";
   };
 
   nixConfig = {

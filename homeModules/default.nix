@@ -10,5 +10,6 @@
     ./wallpaper.nix
     ./git.nix
     ./filen.nix
+    ./opencode.nix
   ];
 }
