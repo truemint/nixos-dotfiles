@@ -11,5 +11,6 @@
     ./git.nix
     ./filen.nix
     ./opencode.nix
+    ./obsidian.nix
   ];
 }
